@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>task</title>
+</head>
+
+<body>
+    <script>
+
+        var cixis = false;
+        var giris = false;
+
+
+        var istifadeciler = [];
+
+        var istifadeci = {
+            ad: "",
+            soyad: "",
+            yas: "",
+            istifadeciAdi: "",
+            parol: ""
+
+        };
+       
+        function loqinOlmaq() {
+            alert("loqin parol daxil edin");
+            istifadeci.istifadeciAdi = prompt("istifadeci adi qeyd edin");
+            istifadeci.parol = prompt("parol qeyd edin");
+            giris = true;
+
+
+        }
+        
+        function qeydiyyat() {
+            alert("qeydiyyat (isdifadeci melumatlarini daxil edin)");
+            istifadeci.ad = prompt("ad");
+            istifadeci.soyad = prompt("soyad");
+            istifadeci.istifadeciAdi = prompt("istifadeci Adi- " + istifadeci.istifadeciAdi);
+            istifadeci.parol = prompt("parol");
+
+            istifadeci.yas = reqemBeraberEt(prompt("yas- " + istifadeci.yas),"yas- ","yas yalniz reqem olmalidir")
+        }
+
+        function melumatlarinDeyisdirilmesi() {
+            alert("melumatlarin deyisdirilmesi");
+            istifadeci.ad = prompt("adiniz- " + istifadeci.ad);
+            istifadeci.soyad = prompt("soyadiniz- " + istifadeci.soyad);
+            istifadeci.istifadeciAdi = prompt("istifadeci Adi- " + istifadeci.istifadeciAdi);
+            istifadeci.parol = prompt("parol-" + istifadeci.parol);
+
+            istifadeci.yas = reqemBeraberEt(prompt("yas- " + istifadeci.yas),"yas- ","yas yalniz reqem olmalidir")
+        }
+       
+        function cixis() {
+            console.log("cixis")
+            cixis = true;
+        }
+
+        function girisMesaj(mesaj) {
+            var netice = prompt(mesaj);
+            return netice;
+        }
+
+        function reqemYoxla(reqem) {
+            var reqemeCevrilme = Number(reqem);
+            var netice = !isNaN(reqemeCevrilme);
+            return netice;
+        }
+    
+        function reqemBeraberEt(reqem,promtText,Alertmesaj) {
+            while (reqemYoxla(reqem)==false) {
+                alert(Alertmesaj);
+                reqem =  prompt(promtText + istifadeci.yas);
+            }
+
+            return reqem;
+     }
+
+        while (cixis == false) {
+            var reqem;
+            if (giris == true) {
+                reqem = girisMesaj("1-giris,2-qeydiyyat,3-melumatlari deyismek,4-cixis")
+
+            }
+            else {
+                reqem = girisMesaj("1-giris,2-qeydiyyat,4-cixis")
+
+            }
+
+            if (reqem == 1) {
+                loqinOlmaq();
+
+            }
+
+            else if (reqem == 3 && giris == true) {
+                melumatlarinDeyisdirilmesi();
+
+            }
+            else if (reqem == 2 && giris == false) {
+                qeydiyyat();
+            }
+            else if (reqem == 4) {
+                cixis();
+            }
+            else {
+                alert("bele xidmet movcud deyil");
+            }
+
+        }
+
+
+    </script>
+</body>
+
+</html>
